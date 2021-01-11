@@ -1,0 +1,39 @@
+* {
+	transition: all 250ms !important;
+}
+
+.hero {
+	max-width: 100% !important;
+	margin: 0 !important;
+}
+
+.hero-flex {
+	display: flex;
+	flex-direction: row !important;
+}
+
+.hero-column {
+	flex-grow:1;
+	padding: 2rem;
+	max-width: 50%;
+	height: 75vh;
+	max-height: 75vh;
+}
+
+.v-center{
+	position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.portfolio-btn {
+	background-color:#994b4b;
+	transition: all 250ms;
+}
+
+.portfolio-btn:hover {
+	background-color:#fff;
+	color: #994b4b !important;
+}
