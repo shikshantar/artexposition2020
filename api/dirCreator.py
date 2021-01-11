@@ -25,9 +25,10 @@ def main():
                 
                 # check if the given directory can be made
                 # if not then recreate after deleting the directory
-                try :
+		
+                try:
                     os.mkdir(fullpath)
-                except :
+                except:
                     os.rmdir(fullpath)
                     os.mkdir(fullpath)
                 
