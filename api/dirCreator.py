@@ -2,11 +2,13 @@ import json
 import os
 
 file_name = 'participants.json'
+parent_dir = ''
 
 with open(file_name) as f:
 	data = json.load(f)
 
 def main():	
+    dirs = []
     
     for item in data.items():
         path = ""
@@ -27,11 +29,16 @@ def main():
                 # if not then recreate after deleting the directory
 		
                 try:
-                    os.mkdir(fullpath)
+                    os.mkdir(parentdir + '/' + fullpath)
                 except:
-                    os.rmdir(fullpath)
-                    os.mkdir(fullpath)
+                    os.rmdir(parentdir + '/' + fullpath)
+                    os.mkdir(parentdir + '/' + fullpath)
+			
+		dirs.append(fullpath)
                 
                 
 main()
+
+with open('inode.json', 'w') as f:
+    json.dump(dirs, f)
       
