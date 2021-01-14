@@ -166,7 +166,7 @@ getAndDisplayOpeningDialogue = () => {
 	await initialise_participants()
 
 	children.forEach(child => {
-		if (child.textContent != "?") {
+		if (!child.textContent.includes("<")) {
 			child.onclick = function () {
 				this.class = this.textContent
 				this.dropdown_content = participants[this.textContent]
