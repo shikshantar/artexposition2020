@@ -111,14 +111,14 @@ initialiseParticipantButtonAction = () => {
 		btn.authorName = btn.textContent;
 
 		btn.onclick = function (){
-			openShowcase(this.authorName)
+			openPortfolio(this.authorName)
 		}
 	})
 }
 
 
-openShowcase = name => {
-	window.open("/Showcase?p="+name)
+openPortfolio = name => {
+	window.open("/Portfolio?p="+name)
 }
 
 
