@@ -1,5 +1,8 @@
 initialiseTheCards = () => {
+	str = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.IxLbxM_0EOOqirRmMWLKrAHaNK%26pid%3DApi&f=1,https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.aJ1uZzv6RwE-ywKw_o8wtwHaEo%26pid%3DApi&f=1,https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.ZVzzwT34id48uBwLn-YTkwEsC7%26pid%3DApi&f=1,https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.2dX1OlBL7Dz0jm0uAtQClAHaEo%26pid%3DApi&f=1,https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Vfl8aXTh7itRXO3EM2ucpwHaEK%26pid%3DApi&f=1,https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.DxpkktdoIQQkjRRQvN6TzQHaNK%26pid%3DApi&f=1,https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.KOTb69POkFOgMmfH_U-0mgHaNK%26pid%3DApi&f=1',https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.jWOba9THMPAiCcJuH3EvzgHaEK%26pid%3DApi&f=1,https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.vBiLoEr0YME3g6cczqS0OAHaEK%26pid%3DApi&f=1,https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.a9Si9uyGHSgYjJaDW4yuSQHaNK%26pid%3DApi&f=1,'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.bhp2cEaU3GZdrKj9JjtlOAHaEK%26pid%3DApi&f=1',https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.ACQnDlXb5WDszzycD0HWVwHaEK%26pid%3DApi&f=1"
 	slider = document.getElementById("slider")
+
+	arr = str.split(",")
 
 	slider_data = ``
 	for (i = 0; i < 12; i++) {
@@ -7,7 +10,7 @@ initialiseTheCards = () => {
 			<div class="carousel__slider__item">
 			<div class="item__3d-frame">
 			<div class="item__3d-frame__box item__3d-frame__box--front">
-				<img src="i.gif">
+				<img src="${arr[i]}">
 			</div>
 			<div class="item__3d-frame__box item__3d-frame__box--left"></div>
 			<div class="item__3d-frame__box item__3d-frame__box--right"></div>
