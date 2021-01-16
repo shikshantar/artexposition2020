@@ -41,7 +41,7 @@ for thumbnailing refer to python3's lib PIL or PILLOW
 
 DIRECTORY STRUCTURE ---------------
 
-all the directories are paths of the website (like "StudentDirectory" and "Showcase")
+all the directories are paths of the website (like "StudentDirectory" and "Portfolio")
 the only important directories are
 - /api/ 
 	this directory will contain all the data in a pseudo filesystem, with inodes
