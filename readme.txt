@@ -1,5 +1,5 @@
 HOW IT WILL WORK ---------------------
-the way how the website works can be broken in to 2 parts,
+the way how the website works can be broken in to two parts,
 the first is the GUI, or the HTML pages, the second being the API or all the data
 
 when the HTML pages are "fetched" by the browser, the JS goes to the API path (which has not been set for github yet)
