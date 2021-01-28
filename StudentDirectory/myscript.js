@@ -60,31 +60,58 @@ shuffle = a => {
     return a;
 }
 
-generateShowcase = participants => {
+generateShowcase = async (participants, tag) => {
 	HTML = `<div class="image-column">`
 	
 	participant_rows = divideArray(participants,3)
 
-	participant_rows.forEach (participant_row => {
+	for (participant_row of participant_rows) {
 		HTML += `<div class="image-row">`
 
-		participant_row.forEach (participant => {
+		for (participant of participant_row) {
 			console.log(participant)
+			image_link = await getImage(participant)
+			console.log("recv :"+image_link)
 			HTML += `<div class="image">
-			<img src='https://wolper.com.au/wp-content/uploads/2017/10/image-placeholder.jpg'>
+			<img src="${image_link}">
 			<h6 style="padding-top: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem">${participant.name}</h6>
 			<p style="padding: 0 0.5rem ">${participant.group}</p>
 			<div class="view-more">
 				View more
+				<span style="display:none">${participant.name}</span>
+				<span style="display:none">${participant.group}</span>
 			</div>
 			</div>`
-		})
+		}
 		HTML += `</div>`
-	})
+	}
 
 	HTML += '<div>'
 
-	return HTML
+	document.getElementById("data_display").innerHTML = HTML;
+	initialiseParticipantButtonAction()
+	active_tab.classList.remove("active-tab");
+	tag.classList.add("active-tab");
+	
+	active_tab = tag;
+
+
+}
+
+getImage = async participant => {
+	name = `${participant.name}_${participant.group}`
+	var path = "./pictures/"+name+"/inode.json"
+	console.log(path)
+	try {
+		await fetch(API_PATH+path).
+		then (str => str.json()).
+		then (obj => path = obj)
+		path = path[1]
+		return API_PATH+`/pictures/${name}/${path}/thumbnail.jpg`
+	} catch (e){
+		console.log(e)
+		return "https://wolper.com.au/wp-content/uploads/2017/10/image-placeholder.jpg"
+	}
 }
 
 divideArray = (arr,num) => {
@@ -108,17 +135,18 @@ initialiseParticipantButtonAction = () => {
 	console.log(btns)
 	btns.forEach(btn => {
 
-		btn.authorName = btn.textContent;
+		btn.name = btn.children[0].textContent
+		btn.group = btn.children[1].textContent
 
 		btn.onclick = function (){
-			openPortfolio(this.authorName)
+			openPortfolio(this.name, this.group)
 		}
 	})
 }
 
 
-openPortfolio = name => {
-	window.open("/Portfolio?p="+name)
+openPortfolio = (name,group) => {
+	window.open(`/Portfolio?p=${name}&g=${group}`)
 }
 
 
@@ -165,7 +193,7 @@ getAndDisplayOpeningDialogue = () => {
 
 	await initialise_participants()
 
-	children.forEach(child => {
+	for (child of children) {
 		if (!child.innerHTML.includes("<")) {
 			child.onclick = function () {
 				this.class = this.textContent
@@ -176,20 +204,11 @@ getAndDisplayOpeningDialogue = () => {
 				grade = this.textContent
 				this.sortedParticipants = getSortedParticipants(grade)
 	
-				HTML = generateShowcase(this.sortedParticipants)
-	
-				console.log(this.sortedParticipants)
-				
-				document.getElementById("data_display").innerHTML = HTML;
-				initialiseParticipantButtonAction()
-				active_tab.classList.remove("active-tab");
-				this.classList.add("active-tab");
-	
-				active_tab = this;
+				generateShowcase(this.sortedParticipants, this)
 				
 			}
 		}
-	})
+	}
 	
 	getAndDisplayOpeningDialogue()
 
