@@ -71,6 +71,9 @@ generateShowcase = async (participants, tag) => {
 		for (participant of participant_row) {
 			console.log(participant)
 			image_link = await getImage(participant)
+			if (image_link == null) {
+				continue
+			}
 			console.log("recv :"+image_link)
 			HTML += `<div class="image">
 			<img src="${image_link}">
@@ -105,12 +108,21 @@ getImage = async participant => {
 	try {
 		await fetch(API_PATH+path).
 		then (str => str.json()).
-		then (obj => path = obj)
-		path = path[1]
+		then (obj => paths = obj)
+		var path = ""
+		for (possiblePath of paths) {
+			if (path.includes("icon")) {
+				path = possiblePath
+			}
+		}
+
+		if (path == "") {
+			path = paths[0]
+		}
 		return API_PATH+`/pictures/${name}/${path}/thumbnail.jpg`
 	} catch (e){
 		console.log(e)
-		return "https://wolper.com.au/wp-content/uploads/2017/10/image-placeholder.jpg"
+		return null
 	}
 }
 
@@ -151,7 +163,7 @@ openPortfolio = (name,group) => {
 
 
 initialise_participants = async () => {
-	await fetchFromAPI("participants.json", p => {
+	await fetchFromAPI("./../api/participants.json", p => {
 		participants = p
 	})
 }
@@ -173,16 +185,18 @@ executeDropdownBehaviour = tag => {
 	} )
 }
 
-getAndDisplayOpeningDialogue = () => {
-	display = document.getElementById("data_display")
-
+getAndDisplayOpeningDialogue = child => {
+	var thetab = child
 	fetch ("./introduction.html").
 	then (response => response.text()).
 	then (data => {
+		display = document.getElementById("data_display")
+
+		console.log(data)
 		display.innerHTML = data
 		active_tab.classList.remove("active-tab");
-		this.classList.add("active-tab");
-		active_tab = this;
+		thetab.classList.add("active-tab");
+		active_tab = thetab;
 	})
 
 }
@@ -190,14 +204,18 @@ getAndDisplayOpeningDialogue = () => {
 (async function() {
 	var tabs = document.getElementById('tab-holder');
 	var children = Array.prototype.slice.call(tabs.children);
+	console.log(children)
 
 	await initialise_participants()
+	console.log(children)
 
 	for (child of children) {
+		console.log(child)
 		if (!child.innerHTML.includes("<")) {
 			child.onclick = function () {
 				this.class = this.textContent
 				this.dropdown_content = participants[this.textContent]
+				console.log("helo")
 	
 				//executeDropdownBehaviour(this)
 				
@@ -205,11 +223,12 @@ getAndDisplayOpeningDialogue = () => {
 				this.sortedParticipants = getSortedParticipants(grade)
 	
 				generateShowcase(this.sortedParticipants, this)
-				
 			}
+		} else {
+			console.log(child)
+			child.click()
 		}
 	}
-	
-	getAndDisplayOpeningDialogue()
 
+	
 })();
