@@ -1,19 +1,19 @@
-startBackgroundRotation = async (images, delay) => {
+startBackgroundRotation = async (totalImages, delay) => {
 	rotation_index = 0
 
-	function rotate(imgs, index) {
-		document.getElementById("slideshow").style.backgroundImage = `url(./staticAssets/banner/${index%imgs.length}.jpg)`
-
+	function rotate(totalImages, index) {
+		document.getElementById("slideshow").style.backgroundImage = `url(./staticAssets/banner/${index%totalImages}.jpg)`
+		console.log(index)
 		return index + 1
 	}
 
 	setInterval(() => {
-		rotation_index = rotate(images, rotation_index) 
+		rotation_index = rotate(totalImages, rotation_index)
 	}, delay);
 }
 
 (function() {
-	
-	startBackgroundRotation(images,10000)
+
+	startBackgroundRotation(5,3000)
 
 })()
