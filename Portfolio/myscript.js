@@ -29,6 +29,10 @@ initialiseImages = async (name,group) => {
 
 (async function() {
     name = decodeURI(getUrlParameter("p"))
+
+    document.getElementById("studentNameTitle").textContent = name + " - Shikshantar Art"
+    console.log(name)
+
     document.getElementById("studentName").textContent = name
     console.log(name)
 
