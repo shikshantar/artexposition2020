@@ -47,11 +47,12 @@ initialiseImages = async (name,group) => {
 
     for (i of images) {
         image = `./../api/pictures/${name}_${group}/${i}/thumbnail.jpg`
+        correctedImageName = i.split("_")[0]
         if (itr%2 == 0) {
             row1 +=    `
             <div class="image" onclick="window.open(${image})">
                 <a href="${image}" data-featherlight="image"><img src="${image}" scale="0"></a>
-                <h6 style="padding-top: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem">${i}</h6>
+                <h6 style="padding-top: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem">${correctedImageName}</h6>
                 <p style="padding: 0 0.5rem ">${name}, ${group}</p>
                 <div style="height:40px;" aria-hidden="true" class="wp-block-spacer"></div>
             </div>
@@ -60,7 +61,7 @@ initialiseImages = async (name,group) => {
             row2 += `
             <div class="image" onclick="window.open(${image})">
                 <a href="${image}" data-featherlight="image"><img src="${image}" scale="0"></a>
-                <h6 style="padding-top: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem">${i}</h6>
+                <h6 style="padding-top: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem">${correctedImageName}</h6>
                 <p style="padding: 0 0.5rem ">${name}, ${group}</p>
                 <div style="height:40px;" aria-hidden="true" class="wp-block-spacer"></div>
             </div>
