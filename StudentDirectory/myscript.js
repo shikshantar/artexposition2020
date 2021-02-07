@@ -111,7 +111,7 @@ getImage = async participant => {
 		then (obj => paths = obj)
 		var path = ""
 		for (possiblePath of paths) {
-			if (path.includes("icon")) {
+			if (possiblePath.toUpperCase().includes("ICON")) {
 				path = possiblePath
 			}
 		}
