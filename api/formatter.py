@@ -32,27 +32,15 @@ def constructDirectoriesAndJson (img_path, name_vars, file_name):
     THUMBNAIL_SIZE = (757,757)
     directory = None
 
-    suffix = ""
-    print(name_vars)
 
-    if "ICON" in file_name.upper():
-        print("========================")
-        print("icon :",file_name)
-        suffix = "_ICON"
-        print(name_vars)
-        del name_vars[0]
-        print("========================")
-
-
-
-    dirname = "./pictures/"+name_vars[0] + name_vars[1]
+    dirname = "./pictures/"+name_vars[0] + "_" + name_vars[1]
 
     if not os.path.isdir(dirname):
         os.mkdir(dirname)
         print(dirname)
         directory = dirname
 
-    project_name = name_vars[2]+"_"+suffix
+    project_name = name_vars[2]
 
     project_path = os.path.join(dirname,project_name)
     os.mkdir(project_path)
