@@ -33,6 +33,15 @@ def constructDirectoriesAndJson (img_path, name_vars, file_name):
     directory = None
 
 
+    suffix = ""
+    print(name_vars)
+
+    if "ICON" in file_name.upper():
+        print("icon :",file_name)
+        suffix = "_ICON"
+        print(name_vars)
+        del name_vars[0]
+
     dirname = "./pictures/"+name_vars[0] + "_" + name_vars[1]
 
     if not os.path.isdir(dirname):
@@ -40,7 +49,7 @@ def constructDirectoriesAndJson (img_path, name_vars, file_name):
         print(dirname)
         directory = dirname
 
-    project_name = name_vars[2]
+    project_name = name_vars[2] + suffix
 
     project_path = os.path.join(dirname,project_name)
     os.mkdir(project_path)

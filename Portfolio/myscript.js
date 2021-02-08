@@ -47,7 +47,7 @@ initialiseImages = async (name,group) => {
 
     for (i of images) {
         image = `./../api/pictures/${name}_${group}/${i}/thumbnail.jpg`
-        correctedImageName = i.split("_")[0]
+
         if (itr%2 == 0) {
             row1 +=    `
             <div class="image" onclick="window.open(${image})">
