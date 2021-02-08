@@ -4,19 +4,13 @@ var active_tab = document.getElementById("tab-holder").children[0];
 
 var API_PATH = "/api/"
 
-var test_images = [
-	"/thumbnailer/artWebsite/bani/bani_poster1/(320, 320).jpg",
-	"/thumbnailer/artWebsite/nandini/nandini_cover1/(320, 320).jpg",
-	"/thumbnailer/artWebsite/Taesha/Taesha_still-life/(320, 320).jpg"
-]
-
 fetchFromAPI = async (path,func) => {
 	await fetch(API_PATH+path).
 	then (str => str.json()).
 	then (obj => func(obj))
 }
 
-getSortedParticipants = grade => {
+getSortedParticipants = async rade => {
 	elegibleParticipants = participants[grade]
 
 	keys = Object.keys(elegibleParticipants)
@@ -34,7 +28,18 @@ getSortedParticipants = grade => {
 				"artwork" : []
 			}
 
-			sortedParticipants.push(participant)
+			var request;
+			if(window.XMLHttpRequest)
+				request = new XMLHttpRequest();
+			else
+				request = new ActiveXObject("Microsoft.XMLHTTP");
+			request.open('GET',API_PATH+"./pictures/"+participant.name+"_"+participant.group+"/inode.json", false);
+			request.send(); // there will be a 'pause' here until the response to come.
+			// the object request will be actually modified
+			if (request.status !== 404)
+				sortedParticipants.push(participant)
+			else
+				console.log(participant.name+" does not exist")
 		}
 		/*
 		old code fpr shuffling, never know when it might be used
@@ -212,7 +217,9 @@ getAndDisplayOpeningDialogue = child => {
 	for (child of children) {
 		console.log(child)
 		if (!child.innerHTML.includes("<")) {
-			child.onclick = function () {
+			child.onclick = async function () {
+				document.getElementById("data_display").innerHTML = ""
+
 				this.class = this.textContent
 				this.dropdown_content = participants[this.textContent]
 				console.log("helo")
@@ -220,7 +227,7 @@ getAndDisplayOpeningDialogue = child => {
 				//executeDropdownBehaviour(this)
 				
 				grade = this.textContent
-				this.sortedParticipants = getSortedParticipants(grade)
+				this.sortedParticipants = await getSortedParticipants(grade)
 	
 				generateShowcase(this.sortedParticipants, this)
 			}
