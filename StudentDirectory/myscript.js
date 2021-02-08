@@ -67,11 +67,11 @@ shuffle = a => {
 
 generateShowcase = async (participants, tag) => {
 	HTML = `<div class="image-column">`
-	
+
 	participant_rows = divideArray(participants,3)
 
 	for (participant_row of participant_rows) {
-		HTML += `<div class="image-row">`
+		HTML += `<div class="image-row" style="width:35rem">`
 
 		for (participant of participant_row) {
 			console.log(participant)
@@ -100,7 +100,7 @@ generateShowcase = async (participants, tag) => {
 	initialiseParticipantButtonAction()
 	active_tab.classList.remove("active-tab");
 	tag.classList.add("active-tab");
-	
+
 	active_tab = tag;
 
 
@@ -223,12 +223,12 @@ getAndDisplayOpeningDialogue = child => {
 				this.class = this.textContent
 				this.dropdown_content = participants[this.textContent]
 				console.log("helo")
-	
+
 				//executeDropdownBehaviour(this)
-				
+
 				grade = this.textContent
 				this.sortedParticipants = await getSortedParticipants(grade)
-	
+
 				generateShowcase(this.sortedParticipants, this)
 			}
 		} else {
@@ -237,5 +237,5 @@ getAndDisplayOpeningDialogue = child => {
 		}
 	}
 
-	
+
 })();
