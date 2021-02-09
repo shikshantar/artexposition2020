@@ -20,7 +20,7 @@ h3 {
 }
 
 .intro {
-	padding-right: 5rem
+	padding-right: 0rem
 }
 
 .my-flex {
@@ -171,11 +171,20 @@ hr .solid {
 	top: 10rem
 }
 
-@media only screen and (min-width: 800px) {
+
+.intro-flex {
+	display: flex;
+	flex-flow: column wrap;
+	margin-right: 2rem;
+}
+
+.intro-flex * img {
+	padding: 0.75rem;
+}
+
+
+@media only screen and (min-width: 600px) {
   /* For desktop: */
-  .intro {
-	  padding-right: 15rem
-  }
 
   .image-column {
 	flex-direction: row;
@@ -185,4 +194,27 @@ hr .solid {
   #tab-holder {
 		top: 7rem !important;
 	}
+
+	.intro-flex {
+		flex-direction: row;
+	}
+
+	.intro-flex * img {
+		max-width: 30vw;
+		margin: 5vw;
+		margin-right: 10vw;
+	}
+
+	.intro-flex div {
+		max-width: 40vw;
+	}
+
+	.intro-flex img {
+		margin: 4vw;
+	}
+
+	.intro-flex .intro-flex {
+		max-width: 100% !important;
+	}
+
 }

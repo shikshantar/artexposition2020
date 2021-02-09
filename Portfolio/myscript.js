@@ -46,14 +46,16 @@ initialiseImages = async (name,group) => {
     itr = 0
 
     for (i of images) {
-        image = `./../api/pictures/${name}_${group}/${i}/thumbnail.jpg`
-	correctedImageName = i.split("_")[0]
+        image = `./../api/pictures/${name}_${group}/${i}/original.jpg`
+        console.log(i.split(/[_]/))
+        i = i.replace("_ICON","")
+        correctedImageName = i.split("_")[0]
         if (itr%2 == 0) {
             row1 +=    `
             <div class="image" onclick="window.open(${image})">
                 <a href="${image}" data-featherlight="image"><img src="${image}" scale="0"></a>
                 <h6 style="padding-top: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem">${correctedImageName}</h6>
-                <p style="padding: 0 0.5rem ">${name}, ${group}</p>
+                <p style="padding: 0 0.5rem ">${i.split(/[_]/)[1].split(/[.]/)[0]}</p>
                 <div style="height:40px;" aria-hidden="true" class="wp-block-spacer"></div>
             </div>
             `
@@ -62,7 +64,7 @@ initialiseImages = async (name,group) => {
             <div class="image" onclick="window.open(${image})">
                 <a href="${image}" data-featherlight="image"><img src="${image}" scale="0"></a>
                 <h6 style="padding-top: 0.5rem; padding-left: 0.5rem; padding-right: 0.5rem">${correctedImageName}</h6>
-                <p style="padding: 0 0.5rem ">${name}, ${group}</p>
+                <p style="padding: 0 0.5rem ">${i.split(/[_]/)[1].split(/[.]/)[0]}</p>
                 <div style="height:40px;" aria-hidden="true" class="wp-block-spacer"></div>
             </div>
             `

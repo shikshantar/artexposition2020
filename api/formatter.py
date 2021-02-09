@@ -51,14 +51,14 @@ def constructDirectoriesAndJson (img_path, name_vars, file_name):
 
     project_name = name_vars[2] + suffix
 
-    project_path = os.path.join(dirname,project_name)
+    project_path = os.path.join(dirname,project_name+"_"+name_vars[3])
     os.mkdir(project_path)
 
     img = Image.open(img_path)
     img.thumbnail(THUMBNAIL_SIZE)
     img.save(os.path.join(project_path,"thumbnail.jpg"))
 
-    os.rename(img_path,os.path.join(project_path,file_name))
+    os.rename(img_path,os.path.join(project_path,"original.jpg"))
 
     return directory
 

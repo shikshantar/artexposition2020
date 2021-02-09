@@ -71,7 +71,7 @@ generateShowcase = async (participants, tag) => {
 	participant_rows = divideArray(participants,3)
 
 	for (participant_row of participant_rows) {
-		HTML += `<div class="image-row" style="width:35rem">`
+		HTML += `<div class="image-row" style="width:90%;">`
 
 		for (participant of participant_row) {
 			console.log(participant)
