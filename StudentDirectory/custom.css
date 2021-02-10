@@ -1,7 +1,7 @@
 
 * {
 	transition: 250ms all;
-} 
+}
 
 h1 {
 	font-size: 4.6rem !important;
@@ -34,8 +34,6 @@ h3 {
 	padding: 1rem !important;
 	margin: auto !important;
 	color: #fff;
-	/*border-style: solid;
-	border-color: #000;*/
 	margin: 1rem !important;
 	color: #0066ff;
 
@@ -60,30 +58,29 @@ h3 {
 .tab-button {
 	text-align: center;
 	margin: auto !important;
-	/*color: #000;
-	border-style: solid;
-	border-color: #000;
-	*/
 	color: #0066ff;
 	margin: 0.15rem !important;
 	padding: 0.5rem 0 !important;
 	flex-grow: 4;
 	cursor: pointer !important;
-
 }
 
 .tab-button:hover {
-	text-decoration: underline;     
+	text-decoration: underline;
 	text-decoration-color: #0066ff;
 }
 
 .active-tab {
-	color: #6633ff;
+	color: #ffffff;
+	background-image: url("../staticAssets/flag_indicator.png");
+	background-repeat: no-repeat;
+  background-size: 11rem;
+	background-position: center;
 }
 
 .active-tab:hover {
-	text-decoration: underline;     
-	text-decoration-color: #6633ff;
+	text-decoration: underline;
+	text-decoration-color: #ffffff;
 }
 
 hr .solid {
@@ -163,7 +160,7 @@ hr .solid {
 
 .view-more:hover {
 	cursor: pointer;
-	text-decoration: underline;     
+	text-decoration: underline;
 	text-decoration-color: #0066ff;
 }
 
