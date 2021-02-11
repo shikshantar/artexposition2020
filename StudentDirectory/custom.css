@@ -72,7 +72,7 @@ h3 {
 
 .active-tab {
 	color: #ffffff;
-	background-image: url("../staticAssets/flag_indicator.png");
+	background-image: url("https://raw.githubusercontent.com/shikshantar/artexposition2020/master/staticAssets/flag_indicator.png");
 	background-repeat: no-repeat;
   background-size: 11rem;
 	background-position: center;

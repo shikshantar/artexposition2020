@@ -1,4 +1,5 @@
 images = []
+const API = "https://raw.githubusercontent.com/shikshantar/artexposition2020/master/api"
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
@@ -17,7 +18,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
 initialiseImages = async (name,group) => {
     var images
-    await fetch (`./../api/pictures/${name}_${group}/inode.json`).
+    await fetch (`${API}/pictures/${name}_${group}/inode.json`).
     then(response => response.json()).
     then(obj => images = obj)
 
@@ -46,7 +47,7 @@ initialiseImages = async (name,group) => {
     itr = 0
 
     for (i of images) {
-        image = `./../api/pictures/${name}_${group}/${i}/original.jpg`
+        image = `${API}/pictures/${name}_${group}/${i}/original.jpg`
         console.log(i.split(/[_]/))
         i = i.replace("_ICON","")
         correctedImageName = i.split("_")[0]

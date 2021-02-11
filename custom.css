@@ -36,7 +36,7 @@
 	-webkit-transition: background-image 0.5s ease-in-out;
 	-moz-transition: background-image 0.5s ease-in-out;
 
-	background-image: url(staticAssets/banner/4.jpg);
+	background-image: url(https://raw.githubusercontent.com/shikshantar/artexposition2020/master/staticAssets/banner/4.jpg);
 
 	background-repeat: no-repeat;
   background-position: right top;

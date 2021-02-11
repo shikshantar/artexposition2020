@@ -2,7 +2,7 @@ var participants
 
 var active_tab = document.getElementById("tab-holder").children[0];
 
-var API_PATH = "/api/"
+var API_PATH = "https://raw.githubusercontent.com/shikshantar/artexposition2020/master/api/"
 
 fetchFromAPI = async (path,func) => {
 	await fetch(API_PATH+path).
@@ -124,7 +124,7 @@ getImage = async participant => {
 		if (path == "") {
 			path = paths[0]
 		}
-		return API_PATH+`/pictures/${name}/${path}/thumbnail.jpg`
+		return API_PATH+`pictures/${name}/${path}/thumbnail.jpg`
 	} catch (e){
 		console.log(e)
 		return null
@@ -168,7 +168,7 @@ openPortfolio = (name,group) => {
 
 
 initialise_participants = async () => {
-	await fetchFromAPI("./../api/participants.json", p => {
+	await fetchFromAPI("participants.json", p => {
 		participants = p
 	})
 }
