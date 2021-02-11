@@ -163,7 +163,7 @@ initialiseParticipantButtonAction = () => {
 
 
 openPortfolio = (name,group) => {
-	window.open(`/Portfolio?p=${name}&g=${group}`)
+	window.open(`./../Portfolio?p=${name}&g=${group}`)
 }
 
 
