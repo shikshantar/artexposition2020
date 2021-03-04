@@ -70,7 +70,7 @@ generateShowcase = async (participants, tag) => {
 
 		for (participant of participant_row) {
 			console.log(participant)
-			image_link = API_PATH + current_grade_data[participant.name] + "/original.jpg"
+			image_link = API_PATH + current_grade_data[participant.name] + "/thumbnail.jpg"
 			console.log("NEW:"+image_link)
 
 			console.log("recv :"+image_link)
